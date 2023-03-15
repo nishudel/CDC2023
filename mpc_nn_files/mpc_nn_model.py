@@ -101,8 +101,8 @@ class MPC_NN_Predictor(object):
         self.pred_model.eval()
 
         ## May use this to check if correct file is loaded
-        #print("names of files-Encoder",name_gen_path,"\n")
-        #print("names of files-Decoder",name_pred_path,"\n")
+        print("names of files-Encoder",name_gen_path,"\n")
+        print("names of files-Decoder",name_pred_path,"\n")
 
         return "loaded the weights!"
     
@@ -147,7 +147,8 @@ n_state_enc=4
 learning_rate=0.0003
 gen_model=1
 pred_model=1
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+#device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+device = torch.device("cpu")
 
 ## Load the network ##
 mpc_nn_predictor=MPC_NN_Predictor(n_epochs,min_timesteps,n_rollout,n_skips_per_rollout,n_test,n_input,n_output,n_state_enc,learning_rate,gen_model,pred_model,device)
