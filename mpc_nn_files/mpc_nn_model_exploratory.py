@@ -160,6 +160,7 @@ device = torch.device("cpu")
 mpc_nn_predictor=MPC_NN_Predictor(n_epochs,min_timesteps,n_rollout,n_skips_per_rollout,n_test,n_input,n_output,n_state_enc,learning_rate,gen_model,pred_model,device)
 mpc_nn_predictor.load_model_weights("encoder_rnn_decoder_simple_nn_n_rollout_n_skips_MSELOSS_action_t_included")
 
+'''
 
 ## time_step=0 - beginning timestep
 ais_encoder_previous=0
@@ -170,25 +171,25 @@ current_CAV_action= -5.0
 
 nn_prediction,ais_encoder_previous=mpc_nn_predictor.nn_prediction_model(latest_observation,previous_action,ais_encoder_previous,current_CAV_action,time_step=0)
 
-'''
+
 ## These are the reference and the prediction for the input used in this example
 
-reference_tensor:  tensor([-5.3544e+01,  7.6373e+00, -1.4631e-02, -5.2017e+01,  7.6342e+00,
-        -1.5143e-02, -5.0490e+01,  7.6311e+00, -1.5625e-02, -4.8964e+01,
-         7.6279e+00, -1.6155e-02, -4.7439e+01,  7.6245e+00, -1.6715e-02,
-        -4.5914e+01,  7.6211e+00, -1.7306e-02, -4.4391e+01,  7.6175e+00,
-        -1.7929e-02, -4.2867e+01,  7.6138e+00, -1.8585e-02, -4.1345e+01,
-         7.6099e+00, -1.9274e-02, -3.9823e+01,  7.6059e+00, -1.9998e-02])
-decoder_prediction:  tensor([-54.3219,   8.9352,   0.6506, -52.5406,   9.0583,   0.5747, -50.7522,
-          9.1472,   0.4971, -48.9095,   9.2151,   0.4208, -47.0374,   9.2986,
-          0.3441, -45.1749,   9.3496,   0.3049, -43.3091,   9.3803,   0.2646,
-        -41.4378,   9.4326,   0.1963, -39.5321,   9.4583,   0.1659, -37.6572,
-          9.4721,   0.1397], grad_fn=<AddBackward0>)
-'''
+# reference_tensor:  tensor([-5.3544e+01,  7.6373e+00, -1.4631e-02, -5.2017e+01,  7.6342e+00,
+#         -1.5143e-02, -5.0490e+01,  7.6311e+00, -1.5625e-02, -4.8964e+01,
+#          7.6279e+00, -1.6155e-02, -4.7439e+01,  7.6245e+00, -1.6715e-02,
+#         -4.5914e+01,  7.6211e+00, -1.7306e-02, -4.4391e+01,  7.6175e+00,
+#         -1.7929e-02, -4.2867e+01,  7.6138e+00, -1.8585e-02, -4.1345e+01,
+#          7.6099e+00, -1.9274e-02, -3.9823e+01,  7.6059e+00, -1.9998e-02])
+# decoder_prediction:  tensor([-54.3219,   8.9352,   0.6506, -52.5406,   9.0583,   0.5747, -50.7522,
+#           9.1472,   0.4971, -48.9095,   9.2151,   0.4208, -47.0374,   9.2986,
+#           0.3441, -45.1749,   9.3496,   0.3049, -43.3091,   9.3803,   0.2646,
+#         -41.4378,   9.4326,   0.1963, -39.5321,   9.4583,   0.1659, -37.6572,
+#           9.4721,   0.1397], grad_fn=<AddBackward0>)
+
 
 print("nn_prediction",nn_prediction)
 
-''''''
+
 
 ## time_step=1
 
@@ -197,21 +198,21 @@ previous_action=[-5.0, -5.0]
 current_CAV_action= -5.0
 nn_prediction,ais_encoder_previous=mpc_nn_predictor.nn_prediction_model(latest_observation,previous_action,ais_encoder_previous,current_CAV_action,time_step=1)
 
-'''
-## These are the reference and the prediction for the input used in this example
-reference_tensor: [-5.2017e+01,  7.6342e+00, -1.5143e-02, -5.0490e+01,  7.6311e+00,
-        -1.5625e-02, -4.8964e+01,  7.6279e+00, -1.6155e-02, -4.7439e+01,
-         7.6245e+00, -1.6715e-02, -4.5914e+01,  7.6211e+00, -1.7306e-02,
-        -4.4391e+01,  7.6175e+00, -1.7929e-02, -4.2867e+01,  7.6138e+00,
-        -1.8585e-02, -4.1345e+01,  7.6099e+00, -1.9274e-02, -3.9823e+01,
-         7.6059e+00, -1.9998e-02, -3.8303e+01,  7.6018e+00, -2.0753e-02]
 
-decoder_prediction:[-51.9450,   7.1727,   0.5624, -50.5234,   7.2903,   0.5072, -49.0496,
-          7.3674,   0.4431, -47.5563,   7.4702,   0.3935, -46.0516,   7.5254,
-          0.3404, -44.5402,   7.5749,   0.3076, -43.0161,   7.6296,   0.2759,
-        -41.4827,   7.6741,   0.2346, -39.9520,   7.7092,   0.2103, -38.4100,
-          7.7451,   0.1876]
-'''
+# ## These are the reference and the prediction for the input used in this example
+# reference_tensor: [-5.2017e+01,  7.6342e+00, -1.5143e-02, -5.0490e+01,  7.6311e+00,
+#         -1.5625e-02, -4.8964e+01,  7.6279e+00, -1.6155e-02, -4.7439e+01,
+#          7.6245e+00, -1.6715e-02, -4.5914e+01,  7.6211e+00, -1.7306e-02,
+#         -4.4391e+01,  7.6175e+00, -1.7929e-02, -4.2867e+01,  7.6138e+00,
+#         -1.8585e-02, -4.1345e+01,  7.6099e+00, -1.9274e-02, -3.9823e+01,
+#          7.6059e+00, -1.9998e-02, -3.8303e+01,  7.6018e+00, -2.0753e-02]
+
+# decoder_prediction:[-51.9450,   7.1727,   0.5624, -50.5234,   7.2903,   0.5072, -49.0496,
+#           7.3674,   0.4431, -47.5563,   7.4702,   0.3935, -46.0516,   7.5254,
+#           0.3404, -44.5402,   7.5749,   0.3076, -43.0161,   7.6296,   0.2759,
+#         -41.4827,   7.6741,   0.2346, -39.9520,   7.7092,   0.2103, -38.4100,
+#           7.7451,   0.1876]
+
 
 print("nn_prediction",nn_prediction)
 
@@ -223,3 +224,4 @@ print("nn_prediction",nn_prediction)
 nn_prediction.detach().cpu().numpy().tolist()
 
 ########## NOTE- I suggest that we do not convert the ais_encoder_previous to a list/array. ##############
+'''
